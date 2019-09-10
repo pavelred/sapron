@@ -45,8 +45,8 @@ describe('Assertions', function() {
         await expect(arr1).toEqual(arr2);
     });
 
-    fit('сравнение массива строк', async function () {
-        let arr1 = ['1','2','3','4','hi'];
+    it('сравнение массива строк', async function () {
+        let arr1 = ['1','2','3','4','5'];
         let arr2 = ['1','2','3','4','5'];
         await expect(arr1).toEqual(arr2);
     });
