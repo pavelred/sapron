@@ -1,8 +1,8 @@
-const homePageYan = require('./../pageObject/home.pageObject.js');
-const geoPageYan = require('./../pageObject/geo.pageObject.js');
+import {Action} from "../pageObject/home.methods";
+
+const geoPageYan = require('../pageObject/geo.pageObject.js');
 
  describe('Change location and check more tab', function () {
-    const homePage = new homePageYan();
     const geoPage = new geoPageYan();
 
     beforeEach(function() {
@@ -14,8 +14,8 @@ const geoPageYan = require('./../pageObject/geo.pageObject.js');
         expect(browser.getTitle()).toEqual('Яндекс');
     });
 
-    it('should click on location button', async function () {
-        await homePage.location.click();
+    fit('should click on location button', async function () {
+        await Action.saveLocation();
         browser.sleep(5000);
     });
 

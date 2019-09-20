@@ -1,9 +1,9 @@
-/* Page Object for Home page */
+import { by, element } from './../core/node_modules/protractor';
 
-const homePageYan = function () {
-    this.location = element(by.css('span.geolink__reg'));
-    this.moreTab = element(by.css(".home-tabs a[href=\'https://yandex.by/all\']"));
-    //this.moreTabList = element(by.css(".home-tabs__more .home-tabs__more-top .home-tabs__more-item[role='menuitem'] a.home-link_black_yes"))
+export const homePageYan = {
+    location: element(by.css('span.geolink__reg')),
+    moreTab: element(by.css(".home-tabs a[href=\'https://yandex.by/all\']"))
 };
 
-module.exports = homePageYan;
+
+
