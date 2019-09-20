@@ -2,7 +2,7 @@ import {browser} from "protractor";
 import {Action} from "../pageObject/homeMethods";
 //import {it} from "selenium-webdriver/testing";
 
-describe('Change location and check more tab', async () => {
+describe('More tab', async () => {
     beforeEach(async () => {
         await browser.waitForAngularEnabled(false);
         await browser.get('https://yandex.by/');
@@ -13,9 +13,15 @@ describe('Change location and check more tab', async () => {
         browser.sleep(5000);
     });
 
-    it('should click on location button', async () => {
+    it('should write London and wait', async () => {
         await Action.saveLocation();
-        browser.sleep(5000);
+        await Action.sendCitySave('Лондон');
+        //expect(Action.getNameOfCity).toEqual('Лондон');
     });
+
+    fit('should check and save data from more tab',  async () => {
+        await Action.getDataFromMoreTab();
+    });
+
 
 });
