@@ -1,15 +1,17 @@
 import {Action} from "../pageObject/homeMethods";
-import {beforeEach, describe, it} from "selenium-webdriver/testing";
+import {browser, by, element} from "protractor";
+//import {beforeEach, describe, it} from "selenium-webdriver/testing";
 
- describe('Change location and check more tab', function () {
+
+ describe('Change location and check more tab', async function () {
 
     beforeEach(function() {
         browser.waitForAngularEnabled(false);
         browser.get('https://yandex.by/');
     });
 
-    it('should have a title', function() {
-        expect(browser.getTitle()).toEqual('Яндекс');
+    it('should have a title', async function() {
+        expect(await browser.getTitle()).toEqual("Яндекс");
     });
 
     it('should click on location button', async function () {
@@ -17,7 +19,7 @@ import {beforeEach, describe, it} from "selenium-webdriver/testing";
         browser.sleep(5000);
     });
 
-    it('should select location as London and save it', async function () {
+/*    xit('should select location as London and save it', async function () {
         await homePage.location.click();
         await geoPage.city.clear();
         await geoPage.city.sendKeys('Лондон');
@@ -26,7 +28,7 @@ import {beforeEach, describe, it} from "selenium-webdriver/testing";
         browser.sleep(3000);
     });
 
-     it('should check the more tab and get elements from it', async function () {
+     xit('should check the more tab and get elements from it', async function () {
          await homePage.moreTab.click();
          let elabi = element.all(by.css(".home-tabs__more .home-tabs__more-top .home-tabs__more-item[role='menuitem'] a.home-link_black_yes"));
          let elabi2 = await elabi.getText();
@@ -34,7 +36,7 @@ import {beforeEach, describe, it} from "selenium-webdriver/testing";
          browser.sleep(3000);
      });
 
-     it('should change location to Paris and compaire more tabs', async function () {
+     xit('should change location to Paris and compaire more tabs', async function () {
          await homePage.moreTab.click();
          let elabi = element.all(by.css(".home-tabs__more .home-tabs__more-top .home-tabs__more-item[role='menuitem'] a.home-link_black_yes"));
          let elabi2 = await elabi.getText();
@@ -53,5 +55,6 @@ import {beforeEach, describe, it} from "selenium-webdriver/testing";
 
      });
 
+ */
 
  });
