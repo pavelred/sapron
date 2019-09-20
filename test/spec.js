@@ -1,9 +1,7 @@
-import {Action} from "../pageObject/home.methods";
-
-const geoPageYan = require('../pageObject/geo.pageObject.js');
+import {Action} from "../pageObject/homeMethods";
+import {beforeEach, describe, it} from "selenium-webdriver/testing";
 
  describe('Change location and check more tab', function () {
-    const geoPage = new geoPageYan();
 
     beforeEach(function() {
         browser.waitForAngularEnabled(false);
@@ -14,7 +12,7 @@ const geoPageYan = require('../pageObject/geo.pageObject.js');
         expect(browser.getTitle()).toEqual('Яндекс');
     });
 
-    fit('should click on location button', async function () {
+    it('should click on location button', async function () {
         await Action.saveLocation();
         browser.sleep(5000);
     });

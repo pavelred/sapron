@@ -1,4 +1,5 @@
-import { by, element } from './../core/node_modules/protractor';
+import {by, element} from "protractor";
+
 
 export const geoPageYan = {
     city: element(by.css("#city__front-input")),

@@ -1,4 +1,4 @@
-import {homePageYan} from './../pageObject/home.pageObject'
+import {homePageYan} from './homePageObject'
 
 export class Action {
     public static async saveLocation () {

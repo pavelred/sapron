@@ -1,4 +1,4 @@
-import { by, element } from './../core/node_modules/protractor';
+import {by, element} from "protractor";
 
 export const homePageYan = {
     location: element(by.css('span.geolink__reg')),
