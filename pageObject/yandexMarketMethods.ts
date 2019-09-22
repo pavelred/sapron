@@ -1,4 +1,5 @@
 import {browser} from "protractor";
+import {market} from "./yandexMarket";
 
 export class YandexMarketMethods {
 
@@ -27,4 +28,24 @@ export class YandexMarketMethods {
         console.log(text);
         console.log(smuzi);
     }
+
+    public static async DropDown (text, locator) {
+        let marlboro = text;
+        let winston = locator;
+        let Timer = 5000;
+        let Count = 0;
+        winston.sendKeys(marlboro);
+        let btn = market.dropdownList;
+        while (!market.dropdownList.isPresent() && Count<Timer){
+            browser.sleep(1000);
+            Count+=1000;
+        } if (Count === 5000 && !market.dropdownList.isPresent()){
+            throw new Error('No such element');
+        }else
+        await browser.actions().mouseMove(btn).click().perform();
+        browser.sleep(5000);
+    }
+
+
+
 }

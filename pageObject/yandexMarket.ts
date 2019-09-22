@@ -8,7 +8,8 @@ export const market = {
     searchButton: element(by.css('[type=\'submit\'][role=\'button\']')),
     iphoneXR: element(by.css('[href=\'/product--smartfon-apple-iphone-xr-64gb/175941311?show-uid=15691661646024169092816001&nid=54726&context=search\']')),
     searchField: element(by.css('#header-search')),
-    moneyFromField: element(by.css('#glpricefrom'))
+    moneyFromField: element(by.css('#glpricefrom')),
+    dropdownList: element(by.css('.suggest2-rich-item__text'))
 };
 
 
