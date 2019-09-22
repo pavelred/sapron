@@ -34,7 +34,6 @@ export class Action {
         await homePageYan.moreTab.click();
         let dataTwo = element.all(by.css(".home-tabs__more .home-tabs__more-top .home-tabs__more-item[role='menuitem'] a.home-link_black_yes"));
         let textData = await dataTwo.getText();
-        //console.log(textData);
         browser.sleep(3000);
         return textData;
 
@@ -44,7 +43,6 @@ export class Action {
         await homePageYan.moreTab.click();
         let dataThree = element.all(by.css(".home-tabs__more .home-tabs__more-top .home-tabs__more-item[role='menuitem'] a.home-link_black_yes"));
         let textParis = await dataThree.getText();
-        //console.log(textParis);
         browser.sleep(2000);
         return textParis;
     }

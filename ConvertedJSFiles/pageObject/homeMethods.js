@@ -50,7 +50,6 @@ class Action {
             yield homePageObject_1.homePageYan.moreTab.click();
             let dataTwo = protractor_1.element.all(protractor_1.by.css(".home-tabs__more .home-tabs__more-top .home-tabs__more-item[role='menuitem'] a.home-link_black_yes"));
             let textData = yield dataTwo.getText();
-            //console.log(textData);
             protractor_1.browser.sleep(3000);
             return textData;
         });
@@ -60,7 +59,6 @@ class Action {
             yield homePageObject_1.homePageYan.moreTab.click();
             let dataThree = protractor_1.element.all(protractor_1.by.css(".home-tabs__more .home-tabs__more-top .home-tabs__more-item[role='menuitem'] a.home-link_black_yes"));
             let textParis = yield dataThree.getText();
-            //console.log(textParis);
             protractor_1.browser.sleep(2000);
             return textParis;
         });
