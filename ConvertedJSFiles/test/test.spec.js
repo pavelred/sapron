@@ -18,11 +18,11 @@ describe('More tab', () => __awaiter(void 0, void 0, void 0, function* () {
         yield protractor_1.browser.get('https://yandex.by/');
     }));
     it('should compare two arrays from London and Paris', () => __awaiter(void 0, void 0, void 0, function* () {
-        //        browser.sleep(5000);
+        //browser.sleep(5000);
         //await Action.waiter(homePageYan.location);
         yield homeMethods_1.Action.sendCitySave('Лондон');
         let arr1 = yield homeMethods_1.Action.getDataFromMoreTab();
-        //        browser.sleep(3000);
+        //browser.sleep(3000);
         yield homeMethods_1.Action.sendCitySave('Париж');
         let arr2 = yield homeMethods_1.Action.getDataParis();
         expect(arr1).toEqual(arr2);

@@ -18,17 +18,31 @@ class Action {
             yield homePageObject_1.homePageYan.location.click();
         });
     }
-    static sendCitySave(x) {
+    static waiter(x) {
         return __awaiter(this, void 0, void 0, function* () {
-            yield geoPageObject_1.geoPageYan.city.clear();
-            yield geoPageObject_1.geoPageYan.city.sendKeys(x);
-            protractor_1.browser.sleep(4000);
-            yield geoPageObject_1.geoPageYan.dropdownFirstEl.click();
+            let Timer = 5000;
+            let Count = 0;
+            let yourLocator = x;
+            while (!yourLocator.isDisplayed() && Count < Timer) {
+                protractor_1.browser.sleep(1000);
+                Count += 1000;
+            }
+            if (Count === 5000 && !yourLocator.isDisplayed()) {
+                throw new Error('No such element is Displayed');
+                return false;
+            }
+            else {
+                return true;
+            }
         });
     }
-    static getNameOfCity() {
+    static sendCitySave(x) {
         return __awaiter(this, void 0, void 0, function* () {
-            yield homePageObject_1.homePageYan.location.getText;
+            yield homePageObject_1.homePageYan.location.click();
+            yield geoPageObject_1.geoPageYan.city.clear();
+            yield geoPageObject_1.geoPageYan.city.sendKeys(x);
+            protractor_1.browser.sleep(3000);
+            yield geoPageObject_1.geoPageYan.dropdownFirstEl.click();
         });
     }
     static getDataFromMoreTab() {
@@ -36,8 +50,19 @@ class Action {
             yield homePageObject_1.homePageYan.moreTab.click();
             let dataTwo = protractor_1.element.all(protractor_1.by.css(".home-tabs__more .home-tabs__more-top .home-tabs__more-item[role='menuitem'] a.home-link_black_yes"));
             let textData = yield dataTwo.getText();
-            console.log(textData);
+            //console.log(textData);
             protractor_1.browser.sleep(3000);
+            return textData;
+        });
+    }
+    static getDataParis() {
+        return __awaiter(this, void 0, void 0, function* () {
+            yield homePageObject_1.homePageYan.moreTab.click();
+            let dataThree = protractor_1.element.all(protractor_1.by.css(".home-tabs__more .home-tabs__more-top .home-tabs__more-item[role='menuitem'] a.home-link_black_yes"));
+            let textParis = yield dataThree.getText();
+            //console.log(textParis);
+            protractor_1.browser.sleep(2000);
+            return textParis;
         });
     }
 }
