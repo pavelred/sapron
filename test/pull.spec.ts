@@ -20,4 +20,8 @@ describe('Yandex pull testcases: ', async () => {
         browser.sleep(5000);
     });
 
+    it('войти', async () => {
+        await homeMeth.loginPlz('AutotestUser','AutotestUser123');
+    });
+
 });

@@ -1,4 +1,4 @@
-import {by, element} from "protractor";
+import {browser, by, element} from "protractor";
 
 export const yandexHome = {
   loginInput: element(by.css('#passp-field-login')),
@@ -23,10 +23,13 @@ export class homeMeth {
 
     public static async loginPlz (login, password) {
         await this.clickButton(yandexHome.loginButton);
-        await
+        browser.sleep(5000);
         await yandexHome.loginInput.sendKeys(login);
-        await
+        browser.sleep(5000);
+        await this.clickButton(yandexHome.getIn);
         await yandexHome.passInput.sendKeys(password);
+        browser.sleep(5000);
+        await this.clickButton(yandexHome.getIn);
     }
 
 }
