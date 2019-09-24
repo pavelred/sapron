@@ -1,0 +1,29 @@
+{
+  "name": "Sapron",
+  "version": "1.0.0",
+  "description": "testing framework",
+  "main": "conf.ts",
+  "dependencies": {
+    "@types/jasmine": "^3.4.0",
+    "@types/node": "^12.7.5",
+    "protractor": "^5.4.2",
+    "typescript": "^3.6.3",
+    "selenium-webdriver": "latest"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "pretest": "npm run tsc",
+    "test": "protractor ConvertedJSFiles/config.js",
+    "tsc": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pavelred/sapron.git"
+  },
+  "author": "Sapronchik Pavel",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pavelred/sapron/issues"
+  },
+  "homepage": "https://github.com/pavelred/sapron#readme"
+}
