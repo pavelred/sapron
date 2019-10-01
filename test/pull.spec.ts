@@ -1,11 +1,14 @@
 import {browser} from "protractor";
 import {homeMeth, yandexHome} from "../pageObject/yandexHome";
 
+
 describe('Пулл тестов: ', async () => {
     beforeEach(async () => {
         await browser.waitForAngularEnabled(false);
         await browser.get('https://yandex.by/');
         browser.sleep(10000);
+
+
     });
 
     xit('Логин на яндекс почту', async () => {
