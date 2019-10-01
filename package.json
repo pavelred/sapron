@@ -16,6 +16,7 @@
   "devDependencies": {},
   "scripts": {
     "pretest": "npm run tsc",
+    "servo": "webdriver-manager start",
     "test": "protractor ConvertedJSFiles/config.js",
     "tsc": "tsc",
     "report": "allure generate allure-results --clean -o allure-report || true"
