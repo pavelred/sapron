@@ -7,8 +7,6 @@ describe('Пулл тестов: ', async () => {
         await browser.waitForAngularEnabled(false);
         await browser.get('https://yandex.by/');
         browser.sleep(10000);
-
-
     });
 
     xit('Логин на яндекс почту', async () => {

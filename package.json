@@ -2,7 +2,7 @@
   "name": "Sapron",
   "version": "1.0.0",
   "description": "testing framework",
-  "main": "conf.ts",
+  "main": "config.ts",
   "dependencies": {
     "@types/jasmine": "^3.4.0",
     "@types/node": "^12.7.5",
