@@ -11,6 +11,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 const protractor_1 = require("protractor");
 const yandexHome_1 = require("../pageObject/yandexHome");
+let EC = protractor_1.protractor.ExpectedConditions;
 describe('Пулл тестов: ', () => __awaiter(void 0, void 0, void 0, function* () {
     beforeEach(() => __awaiter(void 0, void 0, void 0, function* () {
         yield protractor_1.browser.waitForAngularEnabled(false);
@@ -72,5 +73,12 @@ describe('Пулл тестов: ', () => __awaiter(void 0, void 0, void 0, func
     }));
     it('should ang switch', () => __awaiter(void 0, void 0, void 0, function* () {
         //яндекс не меняет, если что, поправлю потом
+    }));
+    fit('should why not?', () => __awaiter(void 0, void 0, void 0, function* () {
+        let isClickable = yield EC.elementToBeClickable(yandexHome_1.yandexHome.navNews);
+        protractor_1.browser.wait(isClickable, 5000); //ждём пока кнопка станет кликабельной
+        let jesus = EC.and(EC.textToBePresentInElement(yield yandexHome_1.yandexHome.navNews, 'Новости'), EC.visibilityOf(yield yandexHome_1.yandexHome.navNews), isClickable);
+        protractor_1.browser.wait(jesus, 5000); //ждём пока все условия будут true.
+        yield yandexHome_1.homeMeth.clickButton(yandexHome_1.yandexHome.navNews);
     }));
 }));

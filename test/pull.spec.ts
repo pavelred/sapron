@@ -1,6 +1,6 @@
-import {browser} from "protractor";
+import {browser, protractor} from "protractor";
 import {homeMeth, yandexHome} from "../pageObject/yandexHome";
-
+let EC = protractor.ExpectedConditions;
 
 describe('Пулл тестов: ', async () => {
     beforeEach(async () => {
@@ -73,6 +73,14 @@ describe('Пулл тестов: ', async () => {
     });
     it('should ang switch', async () => {
         //яндекс не меняет, если что, поправлю потом
+    });
+
+    fit('should why not?', async () => {
+        let isClickable = await EC.elementToBeClickable(yandexHome.navNews);
+        browser.wait(isClickable, 5000); //ждём пока кнопка станет кликабельной
+        let jesus = EC.and(EC.textToBePresentInElement(await yandexHome.navNews,'Новости'), EC.visibilityOf(await yandexHome.navNews), isClickable);
+        browser.wait(jesus, 5000); //ждём пока все условия будут true.
+        await homeMeth.clickButton(yandexHome.navNews);
     });
 
 });
