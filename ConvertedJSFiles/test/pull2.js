@@ -17,14 +17,19 @@ describe('Пулл тестов 2: ', () => __awaiter(void 0, void 0, void 0, fu
         yield protractor_1.browser.waitForAngularEnabled(false);
         yield protractor_1.browser.get('https://yandex.by/');
     }));
-    it('Логин на яндекс почту', () => __awaiter(void 0, void 0, void 0, function* () {
+    it('Добавленно два телефона', () => __awaiter(void 0, void 0, void 0, function* () {
         yield yandexHome_1.homeMeth.clickButton(yandexHome_1.yandexHome.navMarket);
         yield yandexHome_1.homeMeth.putText(yandexHome_1.yandexHome.headerSearch, 'Note 8');
         yield yandexHome_1.homeMeth.clickButton(yandexHome_1.yandexHome.headerSearchBtn);
+        let isClickable1 = yield EC.invisibilityOf(yandexHome_1.yandexHome.mob1);
+        protractor_1.browser.wait(isClickable1, 3000);
         yield yandexHome_1.homeMeth.clickButton(yandexHome_1.yandexHome.mob1);
-        protractor_1.browser.sleep(2000);
+        let isClickable2 = yield EC.invisibilityOf(yandexHome_1.yandexHome.mob2);
+        protractor_1.browser.wait(isClickable2, 3000);
         yield yandexHome_1.homeMeth.clickButton(yandexHome_1.yandexHome.mob2);
-        protractor_1.browser.sleep(2000);
         yield yandexHome_1.homeMeth.clickButton(yandexHome_1.yandexHome.compVS);
+        let urlOfPage = protractor_1.browser.getCurrentUrl();
+        let urlOfPage2 = '1731400948' && '573324027&';
+        expect(urlOfPage).toContain(urlOfPage2);
     }));
 }));
