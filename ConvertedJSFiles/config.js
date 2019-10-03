@@ -1,10 +1,22 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+const chrome = require("selenium-webdriver/chrome");
+const options = new chrome.Options();
 exports.config = {
     directConnect: true,
     seleniumAddress: 'http://localhost:4444/wd/hub',
     capabilities: {
-        'browserName': 'chrome'
+        browserName: 'chrome',
+        chromeOptions: {
+            args: ["--headless"],
+            prefs: {
+                download: {
+                    'prompt_for_download': false,
+                    'directory_upgrade': true,
+                    'default_directory': '/download'
+                }
+            }
+        }
     },
     framework: 'jasmine2',
     specs: ['./test/pull.spec.js'],
