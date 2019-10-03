@@ -2,6 +2,7 @@ import {browser} from "protractor";
 import {YandexMarketMethods} from "../pageObject/yandexMarketMethods";
 import {market} from "../pageObject/yandexMarket";
 
+
 describe('Basic controls: ', async () => {
     beforeEach(async () => {
         await browser.waitForAngularEnabled(false);

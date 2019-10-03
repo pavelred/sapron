@@ -1,17 +1,14 @@
-import {browser, Config} from 'protractor';
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 const chrome = require("selenium-webdriver/chrome");
 const options = new chrome.Options();
-
-export let config: Config = {
-
-
+exports.config = {
     directConnect: true,
     seleniumAddress: 'http://localhost:4444/wd/hub',
     capabilities: {
         browserName: 'chrome',
-
         chromeOptions: {
-            args: [ "--headless"],
+            args: ["--headless"],
             prefs: {
                 download: {
                     'prompt_for_download': false,
@@ -21,17 +18,12 @@ export let config: Config = {
             }
         }
     },
-
     framework: 'jasmine2',
     specs: ['./test/pull.spec.js'],
     jasmineNodeOpts: {
         defaultTimeoutInterval: 90000
     },
-
-
-
     onPrepare: () => {
-
         /*
         var AllureReporter = require('jasmine-allure-reporter');
         jasmine.getEnv().addReporter(new AllureReporter({
@@ -49,11 +41,9 @@ export let config: Config = {
 
 
          */
-
         let globals = require('protractor');
         let browser = globals.browser;
         browser.manage().window().maximize();
         browser.manage().timeouts().implicitlyWait(5000);
-
     }
 };
