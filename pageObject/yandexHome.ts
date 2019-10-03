@@ -10,19 +10,21 @@ export const yandexHome = {
   errorMessage: element(by.css('.passp-form-field__error')),
   navVideo: element(by.css('[role=\'navigation\'] [data-id=\'video\']')),
   navPics: element(by.css('[role=\'navigation\'] [data-id=\'images\']')),
-    navNews: element(by.css('[role=\'navigation\'] [data-id=\'news\']')),
-    navMaps: element(by.css('[role=\'navigation\'] [data-id=\'maps\']')),
-    navMarket: element(by.css('[role=\'navigation\'] [data-id=\'market\']')),
-   navTranlate: element(by.css('[role=\'navigation\'] [data-id=\'translate\']')),
-    logoYan: element(by.css('.logo_type_link')),
-    langBtn: element(by.css('[role=\'button\'][title=\'Выбрать язык\']')),
-    langBtnMore: element(by.css('[aria-label=\'ещё\'][role=\'link\']')),
-    dropLang: element(by.css('.button_arrow_down')),
-    dropLangEng: element(by.xpath('//span[contains(text(),\'English\')]')),
-    saveBtn: element(by.xpath('//button[@class=\'button form__save button_theme_action button_size_m i-bem button_js_inited\']')),
-
-
-
+  navNews: element(by.css('[role=\'navigation\'] [data-id=\'news\']')),
+  navMaps: element(by.css('[role=\'navigation\'] [data-id=\'maps\']')),
+  navMarket: element(by.css('[role=\'navigation\'] [data-id=\'market\']')),
+  navTranlate: element(by.css('[role=\'navigation\'] [data-id=\'translate\']')),
+  logoYan: element(by.css('.logo_type_link')),
+  langBtn: element(by.css('[role=\'button\'][title=\'Выбрать язык\']')),
+  langBtnMore: element(by.css('[aria-label=\'ещё\'][role=\'link\']')),
+  dropLang: element(by.css('.button_arrow_down')),
+  dropLangEng: element(by.xpath('//span[contains(text(),\'English\')]')),
+  saveBtn: element(by.xpath('//button[@class=\'button form__save button_theme_action button_size_m i-bem button_js_inited\']')),
+  headerSearch: element(by.css('#header-search')),
+  headerSearchBtn: element(by.css('[role=\'button\'][type=\'submit\']')),
+  mob1: element(by.css('[data-id=\'model-1731400948\'] .image_name_compare')),
+  mob2: element(by.css('[data-id=\'model-573324027\'] .image_name_compare')),
+  compVS: element(by.css('.button[href=\'/compare?track=rmmbr\']'))
 
 };
 
@@ -72,9 +74,9 @@ export class homeMeth {
         return x;
     }
 
-
-
-
+    public static async putText(locator, text){
+        locator.sendKeys(text);
+    }
 
 
 }

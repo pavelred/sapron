@@ -30,6 +30,11 @@ exports.yandexHome = {
     dropLang: protractor_1.element(protractor_1.by.css('.button_arrow_down')),
     dropLangEng: protractor_1.element(protractor_1.by.xpath('//span[contains(text(),\'English\')]')),
     saveBtn: protractor_1.element(protractor_1.by.xpath('//button[@class=\'button form__save button_theme_action button_size_m i-bem button_js_inited\']')),
+    headerSearch: protractor_1.element(protractor_1.by.css('#header-search')),
+    headerSearchBtn: protractor_1.element(protractor_1.by.css('[role=\'button\'][type=\'submit\']')),
+    mob1: protractor_1.element(protractor_1.by.css('[data-id=\'model-1731400948\'] .image_name_compare')),
+    mob2: protractor_1.element(protractor_1.by.css('[data-id=\'model-573324027\'] .image_name_compare')),
+    compVS: protractor_1.element(protractor_1.by.css('.button[href=\'/compare?track=rmmbr\']'))
 };
 class homeMeth {
     static putLogin(yourText) {
@@ -83,6 +88,11 @@ class homeMeth {
             yield this.clickButton(button);
             let x = protractor_1.browser.getTitle();
             return x;
+        });
+    }
+    static putText(locator, text) {
+        return __awaiter(this, void 0, void 0, function* () {
+            locator.sendKeys(text);
         });
     }
 }
