@@ -24,7 +24,14 @@ export const yandexHome = {
   headerSearchBtn: element(by.css('[role=\'button\'][type=\'submit\']')),
   mob1: element(by.css('[data-id=\'model-1731400948\'] .image_name_compare')),
   mob2: element(by.css('[data-id=\'model-573324027\'] .image_name_compare')),
-  compVS: element(by.css('.button[href=\'/compare?track=rmmbr\']'))
+  compVS: element(by.css('[href=\'/compare?track=rmmbr\']')),
+  del: element(by.xpath('//span[@class=\'n-compare-toolbar__action-clear link\']//span[@class=\'link__inner\']')),
+  textOnComparePage: element(by.xpath('//div[@class=\'title title_size_18\']')),
+  categoryElecto: element(by.css('[href=\'/catalog--elektronika/54440\']')),
+  actionCams: element(by.xpath('//div[4]//div[2]//ul[1]//li[3]//div[1]//a[1]')),
+  sortir: element(by.css('[data-reqid=\'588abcfb34b887644e388f0d875a6c72\']')),
+
+
 
 };
 
@@ -76,6 +83,21 @@ export class homeMeth {
 
     public static async putText(locator, text){
         locator.sendKeys(text);
+    }
+
+    public static async putMouseOn(location){
+        browser.actions().
+            mouseMove(location).
+            perform();
+    }
+
+    public static async deleteElement(locator){
+        await this.clickButton(locator);
+    }
+
+    public static async afterDeleteText () {
+        let x = await yandexHome.textOnComparePage.getText();
+        return x;
     }
 
 

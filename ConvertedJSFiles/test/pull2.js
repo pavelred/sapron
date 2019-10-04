@@ -32,4 +32,31 @@ describe('Пулл тестов 2: ', () => __awaiter(void 0, void 0, void 0, fu
         let urlOfPage2 = '1731400948' && '573324027&';
         expect(urlOfPage).toContain(urlOfPage2);
     }));
+    it('Удаление телефон и проверка, что они удалились', () => __awaiter(void 0, void 0, void 0, function* () {
+        yield yandexHome_1.homeMeth.clickButton(yandexHome_1.yandexHome.navMarket);
+        yield yandexHome_1.homeMeth.putText(yandexHome_1.yandexHome.headerSearch, 'Note 8');
+        yield yandexHome_1.homeMeth.clickButton(yandexHome_1.yandexHome.headerSearchBtn);
+        let isClickable1 = yield EC.invisibilityOf(yandexHome_1.yandexHome.mob1);
+        protractor_1.browser.wait(isClickable1, 3000);
+        yield yandexHome_1.homeMeth.clickButton(yandexHome_1.yandexHome.mob1);
+        let isClickable2 = yield EC.invisibilityOf(yandexHome_1.yandexHome.mob2);
+        protractor_1.browser.wait(isClickable2, 3000);
+        yield yandexHome_1.homeMeth.clickButton(yandexHome_1.yandexHome.mob2);
+        yield yandexHome_1.homeMeth.clickButton(yandexHome_1.yandexHome.compVS);
+        yield yandexHome_1.homeMeth.deleteElement(yandexHome_1.yandexHome.del);
+        let textOnBoard = EC.visibilityOf(yandexHome_1.yandexHome.textOnComparePage);
+        protractor_1.browser.wait(textOnBoard, 5000);
+        expect(yield yandexHome_1.homeMeth.afterDeleteText()).toContain('Товаров нет');
+    }));
+    fit('Сортировка', () => __awaiter(void 0, void 0, void 0, function* () {
+        yield yandexHome_1.homeMeth.clickButton(yandexHome_1.yandexHome.navMarket); //нажимаем маркет
+        yield yandexHome_1.homeMeth.clickButton(yandexHome_1.yandexHome.categoryElecto); //нажимаем на категории электроники
+        protractor_1.browser.sleep(5000);
+        yield yandexHome_1.homeMeth.clickButton(yandexHome_1.yandexHome.actionCams); //нажимаем на экш-камеры
+        yield yandexHome_1.homeMeth.clickButton(yandexHome_1.yandexHome.sortir);
+        yield yandexHome_1.homeMeth.clickButton(yandexHome_1.yandexHome.sortir);
+        let urlOfPage = protractor_1.browser.getCurrentUrl();
+        let urlOfPage2 = 'dprice';
+        expect(urlOfPage).toContain(urlOfPage2);
+    }));
 }));

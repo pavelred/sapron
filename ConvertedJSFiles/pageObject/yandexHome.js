@@ -34,7 +34,12 @@ exports.yandexHome = {
     headerSearchBtn: protractor_1.element(protractor_1.by.css('[role=\'button\'][type=\'submit\']')),
     mob1: protractor_1.element(protractor_1.by.css('[data-id=\'model-1731400948\'] .image_name_compare')),
     mob2: protractor_1.element(protractor_1.by.css('[data-id=\'model-573324027\'] .image_name_compare')),
-    compVS: protractor_1.element(protractor_1.by.css('.button[href=\'/compare?track=rmmbr\']'))
+    compVS: protractor_1.element(protractor_1.by.css('[href=\'/compare?track=rmmbr\']')),
+    del: protractor_1.element(protractor_1.by.xpath('//span[@class=\'n-compare-toolbar__action-clear link\']//span[@class=\'link__inner\']')),
+    textOnComparePage: protractor_1.element(protractor_1.by.xpath('//div[@class=\'title title_size_18\']')),
+    categoryElecto: protractor_1.element(protractor_1.by.css('[href=\'/catalog--elektronika/54440\']')),
+    actionCams: protractor_1.element(protractor_1.by.xpath('//div[4]//div[2]//ul[1]//li[3]//div[1]//a[1]')),
+    sortir: protractor_1.element(protractor_1.by.css('[data-reqid=\'588abcfb34b887644e388f0d875a6c72\']')),
 };
 class homeMeth {
     static putLogin(yourText) {
@@ -93,6 +98,24 @@ class homeMeth {
     static putText(locator, text) {
         return __awaiter(this, void 0, void 0, function* () {
             locator.sendKeys(text);
+        });
+    }
+    static putMouseOn(location) {
+        return __awaiter(this, void 0, void 0, function* () {
+            protractor_1.browser.actions().
+                mouseMove(location).
+                perform();
+        });
+    }
+    static deleteElement(locator) {
+        return __awaiter(this, void 0, void 0, function* () {
+            yield this.clickButton(locator);
+        });
+    }
+    static afterDeleteText() {
+        return __awaiter(this, void 0, void 0, function* () {
+            let x = yield exports.yandexHome.textOnComparePage.getText();
+            return x;
         });
     }
 }
