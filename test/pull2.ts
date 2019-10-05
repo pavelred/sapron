@@ -43,7 +43,7 @@ describe('Пулл тестов 2: ', async () => {
         expect(await homeMeth.afterDeleteText()).toContain('Товаров нет');
     });
 
-    fit('Сортировка', async () => {
+    it('Сортировка по цене', async () => {
         await homeMeth.clickButton(yandexHome.navMarket); //нажимаем маркет
         await homeMeth.clickButton(yandexHome.categoryElecto); //нажимаем на категории электроники
         browser.sleep(5000);
@@ -53,7 +53,10 @@ describe('Пулл тестов 2: ', async () => {
         let urlOfPage = browser.getCurrentUrl();
         let urlOfPage2 = 'dprice';
         expect(urlOfPage).toContain(urlOfPage2);
+    });
 
+    it('Сортировка по тегу', async () => {
+        
     });
 
 });

@@ -39,7 +39,7 @@ exports.yandexHome = {
     textOnComparePage: protractor_1.element(protractor_1.by.xpath('//div[@class=\'title title_size_18\']')),
     categoryElecto: protractor_1.element(protractor_1.by.css('[href=\'/catalog--elektronika/54440\']')),
     actionCams: protractor_1.element(protractor_1.by.xpath('//div[4]//div[2]//ul[1]//li[3]//div[1]//a[1]')),
-    sortir: protractor_1.element(protractor_1.by.css('[data-reqid=\'588abcfb34b887644e388f0d875a6c72\']')),
+    sortir: protractor_1.element(protractor_1.by.xpath('//div[@class=\'n-filter-panel-dropdown i-bem n-filter-panel-dropdown_js_inited\']//div[3]//a[1]')),
 };
 class homeMeth {
     static putLogin(yourText) {
