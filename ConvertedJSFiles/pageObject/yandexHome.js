@@ -40,6 +40,9 @@ exports.yandexHome = {
     categoryElecto: protractor_1.element(protractor_1.by.css('[href=\'/catalog--elektronika/54440\']')),
     actionCams: protractor_1.element(protractor_1.by.xpath('//div[4]//div[2]//ul[1]//li[3]//div[1]//a[1]')),
     sortir: protractor_1.element(protractor_1.by.xpath('//div[@class=\'n-filter-panel-dropdown i-bem n-filter-panel-dropdown_js_inited\']//div[3]//a[1]')),
+    categoryBit: protractor_1.element(protractor_1.by.css('[href=\'/catalog--bytovaia-tekhnika/54419\']')),
+    fridge: protractor_1.element(protractor_1.by.xpath('//body[@class=\'b-page b-page__body b-page_theme_normal n-layout_name_catalog n-layout i-font_face_ys-text fonts-loaded n-layout_nid_54419 i-global i-anchor-scroller i-font-loader b-zone b-spy-init i-bem b-page_js_inited i-global_js_inited n-layout_js_inited i-anchor-scroller_js_inited i-font-loader_js_inited b-spy-init_js_inited b-zone_js_inited\']//div[@class=\'section N9o4gAuSnb QGJ9xgri-V qUW8qep9Rv _2n8U4OismH\']//div//div//div[1]//div[2]//ul[1]//li[1]//div[1]//a[1]')),
+    fridgeWidth: protractor_1.element(protractor_1.by.xpath('//input[@id=\'15464317to\']'))
 };
 class homeMeth {
     static putLogin(yourText) {

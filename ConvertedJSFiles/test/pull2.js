@@ -48,15 +48,27 @@ describe('Пулл тестов 2: ', () => __awaiter(void 0, void 0, void 0, fu
         protractor_1.browser.wait(textOnBoard, 5000);
         expect(yield yandexHome_1.homeMeth.afterDeleteText()).toContain('Товаров нет');
     }));
-    fit('Сортировка', () => __awaiter(void 0, void 0, void 0, function* () {
+    it('Сортировка по цене', () => __awaiter(void 0, void 0, void 0, function* () {
         yield yandexHome_1.homeMeth.clickButton(yandexHome_1.yandexHome.navMarket); //нажимаем маркет
         yield yandexHome_1.homeMeth.clickButton(yandexHome_1.yandexHome.categoryElecto); //нажимаем на категории электроники
-        protractor_1.browser.sleep(5000);
         yield yandexHome_1.homeMeth.clickButton(yandexHome_1.yandexHome.actionCams); //нажимаем на экш-камеры
-        yield yandexHome_1.homeMeth.clickButton(yandexHome_1.yandexHome.sortir);
+        yield yandexHome_1.homeMeth.clickButton(yandexHome_1.yandexHome.sortir); //нажимаем на кнопку сортировки
         yield yandexHome_1.homeMeth.clickButton(yandexHome_1.yandexHome.sortir);
         let urlOfPage = protractor_1.browser.getCurrentUrl();
         let urlOfPage2 = 'dprice';
         expect(urlOfPage).toContain(urlOfPage2);
+    }));
+    fit('Сортировка по тегу', () => __awaiter(void 0, void 0, void 0, function* () {
+        yield yandexHome_1.homeMeth.clickButton(yandexHome_1.yandexHome.navMarket); //нажимаем маркет
+        yield yandexHome_1.homeMeth.clickButton(yandexHome_1.yandexHome.categoryBit); //нажимаем на категории бытовой техники
+        let isClickable = EC.elementToBeClickable(yandexHome_1.yandexHome.fridge);
+        protractor_1.browser.wait(isClickable, 5000);
+        yield yandexHome_1.homeMeth.clickButton(yandexHome_1.yandexHome.fridge);
+        yield yandexHome_1.homeMeth.putText(yandexHome_1.yandexHome.fridgeWidth, '50');
+        let urlOfPage = protractor_1.browser.getCurrentUrl();
+        let urlOfPage2 = '50';
+        expect(urlOfPage).toContain(urlOfPage2);
+    }));
+    it('Яндекс музыка', () => __awaiter(void 0, void 0, void 0, function* () {
     }));
 }));

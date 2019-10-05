@@ -46,17 +46,28 @@ describe('Пулл тестов 2: ', async () => {
     it('Сортировка по цене', async () => {
         await homeMeth.clickButton(yandexHome.navMarket); //нажимаем маркет
         await homeMeth.clickButton(yandexHome.categoryElecto); //нажимаем на категории электроники
-        browser.sleep(5000);
         await homeMeth.clickButton(yandexHome.actionCams); //нажимаем на экш-камеры
-        await homeMeth.clickButton(yandexHome.sortir);
+        await homeMeth.clickButton(yandexHome.sortir); //нажимаем на кнопку сортировки
         await homeMeth.clickButton(yandexHome.sortir);
         let urlOfPage = browser.getCurrentUrl();
         let urlOfPage2 = 'dprice';
         expect(urlOfPage).toContain(urlOfPage2);
     });
 
-    it('Сортировка по тегу', async () => {
-        
+    fit('Сортировка по тегу', async () => {
+        await homeMeth.clickButton(yandexHome.navMarket); //нажимаем маркет
+        await homeMeth.clickButton(yandexHome.categoryBit); //нажимаем на категории бытовой техники
+        let isClickable = EC.elementToBeClickable(yandexHome.fridge);
+        browser.wait(isClickable, 5000);
+        await homeMeth.clickButton(yandexHome.fridge);
+        await homeMeth.putText(yandexHome.fridgeWidth,'50');
+        let urlOfPage = browser.getCurrentUrl();
+        let urlOfPage2 = '50';
+        expect(urlOfPage).toContain(urlOfPage2);
+    });
+
+    it('Яндекс музыка', async () => {
+        await homeMeth.clickButton(yandexHome.nav)
     });
 
 });
