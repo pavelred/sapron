@@ -1,4 +1,5 @@
 import {browser, by, element} from "protractor";
+import {emitKeypressEvents} from "readline";
 
 export const yandexHome = {
   loginInput: element(by.css('#passp-field-login')),
@@ -14,7 +15,7 @@ export const yandexHome = {
   navMaps: element(by.css('[role=\'navigation\'] [data-id=\'maps\']')),
   navMarket: element(by.css('[role=\'navigation\'] [data-id=\'market\']')),
   navTranlate: element(by.css('[role=\'navigation\'] [data-id=\'translate\']')),
-  logoYan: element(by.css('.logo_type_link')),
+  logoYan: element(by.xpath('//a[@class=\'mail-Logo-Yandex js-mail-logo-yandex with-menu ns-action\']')),
   langBtn: element(by.css('[role=\'button\'][title=\'Выбрать язык\']')),
   langBtnMore: element(by.css('[aria-label=\'ещё\'][role=\'link\']')),
   dropLang: element(by.css('.button_arrow_down')),
@@ -32,7 +33,21 @@ export const yandexHome = {
   sortir: element(by.xpath('//div[@class=\'n-filter-panel-dropdown i-bem n-filter-panel-dropdown_js_inited\']//div[3]//a[1]')),
   categoryBit: element(by.css('[href=\'/catalog--bytovaia-tekhnika/54419\']')),
   fridge: element(by.xpath('//body[@class=\'b-page b-page__body b-page_theme_normal n-layout_name_catalog n-layout i-font_face_ys-text fonts-loaded n-layout_nid_54419 i-global i-anchor-scroller i-font-loader b-zone b-spy-init i-bem b-page_js_inited i-global_js_inited n-layout_js_inited i-anchor-scroller_js_inited i-font-loader_js_inited b-spy-init_js_inited b-zone_js_inited\']//div[@class=\'section N9o4gAuSnb QGJ9xgri-V qUW8qep9Rv _2n8U4OismH\']//div//div//div[1]//div[2]//ul[1]//li[1]//div[1]//a[1]')),
-  fridgeWidth: element(by.xpath('//input[@id=\'15464317to\']'))
+  fridgeWidth: element(by.xpath('//input[@id=\'15464317to\']')),
+  skipButton: element(by.css('.control.button2[data-lego=\'react\'][tabindex=\'0\']')),
+  navMusic: element(by.css('[data-id=\'music\'][href=\'https://music.yandex.by/\']')),
+  musicSearch: element(by.css('input[placeholder=\'Трек, альбом, исполнитель, подкаст\']')),
+  musicFirst: element(by.xpath('//div[@class=\'d-suggest__items d-suggest__items_type_artist\']//div[2]//a[1]')),
+  artist: element(by.css('h1.page-artist__title.typo-h1.typo-h1_big')),
+  popularAlbums: element(by.css('.album__artist.deco-typo-secondary.typo-add')),
+  playPopular: element(by.css('.button-play[data-b=\'3411\']')),
+  pauseTrack: element(by.css('.player-controls__btn_pause.deco-player-controls__button[title=\'Пауза [P]\']')),
+  firstTrack: element(by.css('.button-play.button2.button2_rounded')),
+
+
+
+
+
 };
 
 export class homeMeth {
@@ -57,7 +72,8 @@ export class homeMeth {
         await yandexHome.passInput.sendKeys(password);
         browser.sleep(3000);
         await this.clickButton(yandexHome.getIn);
-        browser.sleep(15000);
+        browser.sleep(3000);
+        await this.clickButton(yandexHome.logoYan);
     }
 
     public static async userName () {
@@ -83,6 +99,7 @@ export class homeMeth {
 
     public static async putText(locator, text){
         locator.sendKeys(text);
+        browser.sleep(3000);
     }
 
     public static async putMouseOn(location){
@@ -97,6 +114,16 @@ export class homeMeth {
 
     public static async afterDeleteText () {
         let x = await yandexHome.textOnComparePage.getText();
+        return x;
+    }
+
+    public static async whoArtist () {
+        let x = await yandexHome.artist.getText();
+        return x;
+    }
+
+    public static async albums () {
+        let x = await yandexHome.popularAlbums.getText();
         return x;
     }
 

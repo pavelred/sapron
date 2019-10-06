@@ -58,7 +58,7 @@ describe('Пулл тестов 2: ', () => __awaiter(void 0, void 0, void 0, fu
         let urlOfPage2 = 'dprice';
         expect(urlOfPage).toContain(urlOfPage2);
     }));
-    fit('Сортировка по тегу', () => __awaiter(void 0, void 0, void 0, function* () {
+    it('Сортировка по тегу', () => __awaiter(void 0, void 0, void 0, function* () {
         yield yandexHome_1.homeMeth.clickButton(yandexHome_1.yandexHome.navMarket); //нажимаем маркет
         yield yandexHome_1.homeMeth.clickButton(yandexHome_1.yandexHome.categoryBit); //нажимаем на категории бытовой техники
         let isClickable = EC.elementToBeClickable(yandexHome_1.yandexHome.fridge);
@@ -70,5 +70,47 @@ describe('Пулл тестов 2: ', () => __awaiter(void 0, void 0, void 0, fu
         expect(urlOfPage).toContain(urlOfPage2);
     }));
     it('Яндекс музыка', () => __awaiter(void 0, void 0, void 0, function* () {
+        yield yandexHome_1.homeMeth.loginPlz('AutotestUser', 'AutotestUser123');
+        let isClickable = EC.visibilityOf(yandexHome_1.yandexHome.navMusic);
+        protractor_1.browser.wait(isClickable, 5000);
+        yield yandexHome_1.homeMeth.clickButton(yandexHome_1.yandexHome.navMusic);
+        protractor_1.browser.sleep(7000);
+        yield yandexHome_1.homeMeth.clickButton(yandexHome_1.yandexHome.musicSearch);
+        protractor_1.browser.sleep(2000);
+        let isClcbl = EC.elementToBeClickable(yandexHome_1.yandexHome.musicSearch);
+        protractor_1.browser.wait(isClcbl, 5000);
+        protractor_1.browser.sleep(2000);
+        yield yandexHome_1.homeMeth.putText(yandexHome_1.yandexHome.musicSearch, 'Metall');
+        protractor_1.browser.sleep(5000);
+        let dropShow = EC.visibilityOf(yandexHome_1.yandexHome.musicFirst);
+        protractor_1.browser.wait(dropShow, 7000);
+        yield yandexHome_1.homeMeth.clickButton(yandexHome_1.yandexHome.musicFirst);
+        let artist = yield yandexHome_1.homeMeth.whoArtist();
+        let album = yield yandexHome_1.homeMeth.albums();
+        console.log(album, artist);
+    }));
+    it('Яндекс музыка', () => __awaiter(void 0, void 0, void 0, function* () {
+        yield yandexHome_1.homeMeth.loginPlz('AutotestUser', 'AutotestUser123');
+        yield yandexHome_1.homeMeth.clickButton(yandexHome_1.yandexHome.navMusic);
+        yield yandexHome_1.homeMeth.putText(yandexHome_1.yandexHome.musicSearch, 'Metall');
+        yield yandexHome_1.homeMeth.clickButton(yandexHome_1.yandexHome.musicFirst);
+        let artist = yield yandexHome_1.homeMeth.whoArtist();
+        let album = yield yandexHome_1.homeMeth.albums();
+        console.log(album, artist);
+        expect(artist && album).toContain('Metallica');
+    }));
+    fit('Яндекс музыка: воспроизведение', () => __awaiter(void 0, void 0, void 0, function* () {
+        yield yandexHome_1.homeMeth.loginPlz('AutotestUser', 'AutotestUser123');
+        yield yandexHome_1.homeMeth.clickButton(yandexHome_1.yandexHome.navMusic);
+        yield yandexHome_1.homeMeth.putText(yandexHome_1.yandexHome.musicSearch, 'beyonce');
+        protractor_1.browser.sleep(5000);
+        yield yandexHome_1.homeMeth.clickButton(yandexHome_1.yandexHome.musicFirst);
+        protractor_1.browser.sleep(5000);
+        yield yandexHome_1.homeMeth.clickButton(yandexHome_1.yandexHome.firstTrack);
+        let x = protractor_1.browser.getTitle();
+        yield yandexHome_1.homeMeth.clickButton(yandexHome_1.yandexHome.firstTrack);
+        let xl = protractor_1.browser.getTitle();
+        expect(x).toContain('Halo — Beyoncé');
+        expect(xl).toContain('Beyoncé — слушать онлайн на Яндекс.Музыке');
     }));
 }));

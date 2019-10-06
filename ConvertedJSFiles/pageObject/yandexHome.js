@@ -24,7 +24,7 @@ exports.yandexHome = {
     navMaps: protractor_1.element(protractor_1.by.css('[role=\'navigation\'] [data-id=\'maps\']')),
     navMarket: protractor_1.element(protractor_1.by.css('[role=\'navigation\'] [data-id=\'market\']')),
     navTranlate: protractor_1.element(protractor_1.by.css('[role=\'navigation\'] [data-id=\'translate\']')),
-    logoYan: protractor_1.element(protractor_1.by.css('.logo_type_link')),
+    logoYan: protractor_1.element(protractor_1.by.xpath('//a[@class=\'mail-Logo-Yandex js-mail-logo-yandex with-menu ns-action\']')),
     langBtn: protractor_1.element(protractor_1.by.css('[role=\'button\'][title=\'Выбрать язык\']')),
     langBtnMore: protractor_1.element(protractor_1.by.css('[aria-label=\'ещё\'][role=\'link\']')),
     dropLang: protractor_1.element(protractor_1.by.css('.button_arrow_down')),
@@ -42,7 +42,16 @@ exports.yandexHome = {
     sortir: protractor_1.element(protractor_1.by.xpath('//div[@class=\'n-filter-panel-dropdown i-bem n-filter-panel-dropdown_js_inited\']//div[3]//a[1]')),
     categoryBit: protractor_1.element(protractor_1.by.css('[href=\'/catalog--bytovaia-tekhnika/54419\']')),
     fridge: protractor_1.element(protractor_1.by.xpath('//body[@class=\'b-page b-page__body b-page_theme_normal n-layout_name_catalog n-layout i-font_face_ys-text fonts-loaded n-layout_nid_54419 i-global i-anchor-scroller i-font-loader b-zone b-spy-init i-bem b-page_js_inited i-global_js_inited n-layout_js_inited i-anchor-scroller_js_inited i-font-loader_js_inited b-spy-init_js_inited b-zone_js_inited\']//div[@class=\'section N9o4gAuSnb QGJ9xgri-V qUW8qep9Rv _2n8U4OismH\']//div//div//div[1]//div[2]//ul[1]//li[1]//div[1]//a[1]')),
-    fridgeWidth: protractor_1.element(protractor_1.by.xpath('//input[@id=\'15464317to\']'))
+    fridgeWidth: protractor_1.element(protractor_1.by.xpath('//input[@id=\'15464317to\']')),
+    skipButton: protractor_1.element(protractor_1.by.css('.control.button2[data-lego=\'react\'][tabindex=\'0\']')),
+    navMusic: protractor_1.element(protractor_1.by.css('[data-id=\'music\'][href=\'https://music.yandex.by/\']')),
+    musicSearch: protractor_1.element(protractor_1.by.css('input[placeholder=\'Трек, альбом, исполнитель, подкаст\']')),
+    musicFirst: protractor_1.element(protractor_1.by.xpath('//div[@class=\'d-suggest__items d-suggest__items_type_artist\']//div[2]//a[1]')),
+    artist: protractor_1.element(protractor_1.by.css('h1.page-artist__title.typo-h1.typo-h1_big')),
+    popularAlbums: protractor_1.element(protractor_1.by.css('.album__artist.deco-typo-secondary.typo-add')),
+    playPopular: protractor_1.element(protractor_1.by.css('.button-play[data-b=\'3411\']')),
+    pauseTrack: protractor_1.element(protractor_1.by.css('.player-controls__btn_pause.deco-player-controls__button[title=\'Пауза [P]\']')),
+    firstTrack: protractor_1.element(protractor_1.by.css('.button-play.button2.button2_rounded')),
 };
 class homeMeth {
     static putLogin(yourText) {
@@ -70,7 +79,8 @@ class homeMeth {
             yield exports.yandexHome.passInput.sendKeys(password);
             protractor_1.browser.sleep(3000);
             yield this.clickButton(exports.yandexHome.getIn);
-            protractor_1.browser.sleep(15000);
+            protractor_1.browser.sleep(3000);
+            yield this.clickButton(exports.yandexHome.logoYan);
         });
     }
     static userName() {
@@ -101,6 +111,7 @@ class homeMeth {
     static putText(locator, text) {
         return __awaiter(this, void 0, void 0, function* () {
             locator.sendKeys(text);
+            protractor_1.browser.sleep(3000);
         });
     }
     static putMouseOn(location) {
@@ -118,6 +129,18 @@ class homeMeth {
     static afterDeleteText() {
         return __awaiter(this, void 0, void 0, function* () {
             let x = yield exports.yandexHome.textOnComparePage.getText();
+            return x;
+        });
+    }
+    static whoArtist() {
+        return __awaiter(this, void 0, void 0, function* () {
+            let x = yield exports.yandexHome.artist.getText();
+            return x;
+        });
+    }
+    static albums() {
+        return __awaiter(this, void 0, void 0, function* () {
+            let x = yield exports.yandexHome.popularAlbums.getText();
             return x;
         });
     }

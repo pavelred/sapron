@@ -54,7 +54,7 @@ describe('Пулл тестов 2: ', async () => {
         expect(urlOfPage).toContain(urlOfPage2);
     });
 
-    fit('Сортировка по тегу', async () => {
+    it('Сортировка по тегу', async () => {
         await homeMeth.clickButton(yandexHome.navMarket); //нажимаем маркет
         await homeMeth.clickButton(yandexHome.categoryBit); //нажимаем на категории бытовой техники
         let isClickable = EC.elementToBeClickable(yandexHome.fridge);
@@ -67,7 +67,49 @@ describe('Пулл тестов 2: ', async () => {
     });
 
     it('Яндекс музыка', async () => {
-        await homeMeth.clickButton(yandexHome.nav)
+        await homeMeth.loginPlz('AutotestUser', 'AutotestUser123');
+        let isClickable = EC.visibilityOf(yandexHome.navMusic);
+        browser.wait(isClickable, 5000);
+        await homeMeth.clickButton(yandexHome.navMusic);
+        browser.sleep(7000);
+        await homeMeth.clickButton(yandexHome.musicSearch);
+        browser.sleep(2000);
+        let isClcbl = EC.elementToBeClickable(yandexHome.musicSearch);
+        browser.wait(isClcbl, 5000);
+        browser.sleep(2000);
+        await homeMeth.putText(yandexHome.musicSearch,'Metall');
+        browser.sleep(5000);
+        let dropShow = EC.visibilityOf(yandexHome.musicFirst);
+        browser.wait(dropShow, 7000);
+        await homeMeth.clickButton(yandexHome.musicFirst);
+        let artist = await homeMeth.whoArtist();
+        let album = await homeMeth.albums();
+        console.log(album, artist);
+
+    });
+
+    it('Яндекс музыка', async () => {
+        await homeMeth.loginPlz('AutotestUser', 'AutotestUser123');
+        await homeMeth.clickButton(yandexHome.navMusic);
+        await homeMeth.putText(yandexHome.musicSearch,'Metall');
+        await homeMeth.clickButton(yandexHome.musicFirst);
+        let artist = await homeMeth.whoArtist();
+        let album = await homeMeth.albums();
+        console.log(album, artist);
+        expect(artist && album).toContain('Metallica');
+    });
+
+    fit('Яндекс музыка: воспроизведение', async () => {
+        await homeMeth.loginPlz('AutotestUser', 'AutotestUser123');
+        await homeMeth.clickButton(yandexHome.navMusic);
+        await homeMeth.putText(yandexHome.musicSearch,'beyonce');
+        await homeMeth.clickButton(yandexHome.musicFirst);
+        await homeMeth.clickButton(yandexHome.firstTrack);
+        let x = browser.getTitle();
+        await homeMeth.clickButton(yandexHome.firstTrack);
+        let xl = browser.getTitle();
+        expect(x).toContain('Halo — Beyoncé');
+        expect(xl).toContain('Beyoncé — слушать онлайн на Яндекс.Музыке');
     });
 
 });
